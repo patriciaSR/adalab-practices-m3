@@ -8,15 +8,18 @@ const users = [
   { name: 'Inmaculada', isPremium: false, pin: 8998 },
 ];
 
+//a)orden alfabetico
 const orderName = users.sort(compare);
-const orderPin = users.sort((a,b) => a.pin - b.pin);
 
 
 function compare(a,b) {
+  const firstName = a.name.toUpperCase();
+  const secondName = b.name.toUpperCase();
+
   let comparation = 0;
-  if(a.name > b.name) {
+  if(firstName > secondName) {
     return comparation = 1;
-  }else if (a.name < b.name) {
+  }else if (firstName < secondName) {
     return comparation = -1;
   }else {
     return comparation;
@@ -24,4 +27,11 @@ function compare(a,b) {
 };
 
 console.log(orderName);
+
+//opción 2 del a)
+const orderName2 = users.sort((a, b) => a.name.localeCompare(b.name));
+console.log(orderName2);
+
+//b)orden por numero de pin
+const orderPin = users.sort((a,b) => a.pin - b.pin);
 console.log(orderPin);
