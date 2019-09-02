@@ -8,8 +8,14 @@ const users = [
   { name: 'Inmaculada', isPremium: false, pin: 8998 },
 ];
 
+// Mediante "[...users]" lo que hacemos es crear una array diferente (nueva referencia) con el mismo contenido:
+// 1. expandimos la variable users "...users"
+// 2. metemos el contenido en un nuevo array "[]"
+console.log('users', [...users]);
+
 //a)orden alfabetico
-const orderName = users.sort(compare);
+users.sort(compare);
+console.log('compare', [...users]);
 
 
 function compare(a,b) {
@@ -26,12 +32,10 @@ function compare(a,b) {
   }
 };
 
-console.log(orderName);
-
 //opción 2 del a)
-const orderName2 = users.sort((a, b) => a.name.localeCompare(b.name));
-console.log(orderName2);
+users.sort((a, b) => a.name.localeCompare(b.name));
+console.log('localeCompare', [...users]);
 
 //b)orden por numero de pin
-const orderPin = users.sort((a,b) => a.pin - b.pin);
-console.log(orderPin);
+users.sort((a,b) => a.pin - b.pin);
+console.log('pin', [...users]);
