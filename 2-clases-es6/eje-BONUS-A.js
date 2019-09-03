@@ -1,5 +1,54 @@
 'use strict';
 
+class Polygon {
+  constructor(numberOfSides, base, height) {
+    this.numberOfSides = numberOfSides;
+    this.base = base;
+    this.height = height;
+  }
+
+  perimeter() {
+    return this.base * this.numberOfSides;
+  }
+  area() {
+    return this.base * this.height;
+  }
+}
+
+class Square extends Polygon {
+  constructor(base) {
+    super(4, base, base);
+    // this.side = this.base; -> Es lo mismo
+    this.side = base;
+  }
+}
+
+class Triangle extends Polygon {
+  constructor(base, height) {
+    super(3, base, height);
+    // this.side = base; -> Es lo mismo
+    this.side = this.base;
+  }
+
+  area() {
+    return super.area() / 2;
+  }
+}
+
+const square4 = new Square(4);
+const triangle4 = new Triangle(4, 3);
+
+console.log(`El lado de square4 es ${square4.side}`);
+console.log(`El perímetro de square4 es ${square4.perimeter()}`);
+console.log(`El area de square4 es ${square4.area()}`);
+
+console.log(`----------`);
+
+console.log(`la base de triangle4 es ${triangle4.base}`);
+console.log(`El perímetro de triangle4 es ${triangle4.perimeter()}`);
+console.log(`El area de triangle4 es ${triangle4.area()}`);
+
+
 // EJERCICIO BONUS A
 // Vamos a mejorar ¡aún más! nuestra calculadora geométrica sencilla. En el programa definiremos la clase Polygon, Square y Triangle para polígonos regulares (todos sus lados miden lo mismo). Ya os imagináis por dónde van los tiros: las clases Square y Triangle serán subclases de Polygon. La clase Polygon tendrá, al menos:
 // Un atributo para el número de lados (numberOfSides)
