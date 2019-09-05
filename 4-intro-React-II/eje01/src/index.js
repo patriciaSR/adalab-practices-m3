@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import MediaCard from './components/MediaCard';
+import './main.scss';
+import perri from './images/ornitorrinco.jpg';
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const text = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat est ducimus nam pariatur dolore laudantium numquam repellat quo, quod nobis minus, mollitia explicabo culpa atque expedita aut eius necessitatibus quia.';
+const likes = 37;
+const hearts = likes > 30 ? 'red' : '';
+ReactDOM.render(
+  <MediaCard
+    name = 'Perri el ornitorrinco'
+    date = '05 de Septiembre de 2019'
+    image = {perri}
+    text = {text}
+    likes = {likes}
+    heart = {hearts}
+  />
+  , document.getElementById('root')
+);
+
