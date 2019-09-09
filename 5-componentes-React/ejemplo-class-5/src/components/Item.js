@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import { isTSEnumMember } from '@babel/types';
 
 class Item extends React.Component {
   render() {
