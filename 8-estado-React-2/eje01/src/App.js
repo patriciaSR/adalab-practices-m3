@@ -12,23 +12,68 @@ class App extends React.Component {
       lang: '',
       class: 'Todos los públicos',
       genres: [],
+      image: 'https://placekitten.com/640/360'
     }
+    this.fileInput = React.createRef();
+    this.fr = new FileReader();
 
     this.setFilm = this.setFilm.bind(this);
+    this.uploadImage = this.uploadImage.bind(this)
+
+  }
+
+  setGenre(event) {
+    const newValue = event.currentTarget.value;
+    const genres = this.state.genres;
+
+    if (genres.includes(newValue)) {
+      // borro
+      const foundIndex = genres.findIndex((genre) => genre === newValue);
+      // const foundIndex = genres.indexOf(newValue);
+
+      genres.splice(foundIndex, 1);
+
+      this.setState({
+        genres: [...genres]
+      });
+    } else {
+      // añado, hay hueco?
+      if (genres.length < 3) {
+        // sí
+        this.setState({
+          genres: [...genres, newValue]
+        });
+      } else {
+        // no
+        alert('Has alcanzado el máximo de géneros que puedes seleccionar');
+      }
+    }
   }
 
   setFilm(event) {
     const valueName = event.currentTarget.name;
     const newValue = event.currentTarget.value;
-    if(valueName === 'genres'){
+    if (valueName === 'genres') {
+      this.setGenre(event);
+    } else {
       this.setState({
-          genres: [...this.state.genres, newValue]
-      });
+        [valueName]: newValue
+      })
     }
-    this.setState({
-      [valueName]: newValue
-    })
   }
+
+  uploadImage(event){
+    const newFile = event.currentTarget.files[0];
+    // Esto genera una URL "temporal" 
+    // (solo existe mientras la pestaña siga abierta y en el navegador en el que se ha generado)
+    // const newUrl = URL.createObjectURL(newFile);
+    this.fr.addEventListener('load', () => {
+      this.setState({
+        image: this.fr.result
+      });
+    });
+    this.fr.readAsDataURL(newFile);
+  };
 
   render() {
     return (
@@ -36,6 +81,8 @@ class App extends React.Component {
         <Form
           data={this.state}
           setFilm={this.setFilm}
+          uploadImage={this.uploadImage}
+
         />
 
         <Preview
