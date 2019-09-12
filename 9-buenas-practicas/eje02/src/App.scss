@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+}
+
+.coll__content{
+  display: none;
+}
+
+
+.open{
+  .coll__content{
+    display: block;
+  }
+}
+

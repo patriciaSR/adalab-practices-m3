@@ -12,7 +12,7 @@ class App extends React.Component {
       lang: '',
       class: 'Todos los públicos',
       genres: [],
-      image: 'https://placekitten.com/640/360'
+      image: 'https://https://www.placecage.com/c/200/300'
     }
     this.fileInput = React.createRef();
     this.fr = new FileReader();
