@@ -1,0 +1,14 @@
+{
+  "name": "eje01",
+  "version": "1.0.0",
+  "description": "eje01",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Patricia",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
